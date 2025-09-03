@@ -30,24 +30,31 @@ https://tailwindcss.com/docs/installation
 1. **Add the `ProgressBar` component to your project**
 
 ```jsx
-const ProgressBar = ({ progress }) => {
+const ProgressBar = (props) => {
   return (
-    <div className="mx-2 my-2 h-8 rounded-lg bg-gray-200 shadow-inner overflow-hidden">
-      <div
-        className="h-full rounded-lg border border-gray-300 relative"
-        style={{
-          width: `${progress}%`,
-          backgroundColor: "#34D399",
-          backgroundImage:
-            "repeating-linear-gradient(45deg, rgba(255,255,255,0.15) 0, rgba(255,255,255,0.15) 10px, transparent 10px, transparent 20px)",
-          transition: "width 1s ease-in-out",
-        }}
-      >
-        <span className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 font-semibold text-white select-none">
-          {progress}%
-        </span>
+    <>
+      <div className="mx-2 my-2 h-8 rounded-lg bg-gray-200 shadow-inner overflow-hidden">
+        <div
+          className="h-full rounded-lg border border-gray-300 relative"
+          style={{
+            width: `${props.progress}%`,
+            backgroundColor: "#34D399",
+            color: props.progress > 5 ? "white" : "black",
+            backgroundImage:
+              "repeating-linear-gradient(45deg, rgba(255,255,255,0.15) 0, rgba(255,255,255,0.15) 10px, transparent 10px, transparent 20px)",
+            transition: "width 1s ease-in-out",
+          }}
+          role="progressbar"
+          aria-valuemax={100}
+          aria-valuemin={0}
+          aria-valuenow={props.progress}
+        >
+          <span className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 font-semibold text-white select-none">
+            {props.progress}%
+          </span>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
@@ -59,14 +66,12 @@ export default ProgressBar;
 import ProgressBar from './ProgressBar';
 
 function App() {
-const progressValues = [5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95];
-
+const bars = [5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 return (
 <>
-
-<h1 className="text-center font-bold my-4">ProgressBar</h1>
-{progressValues.map((value) => (
-<ProgressBar key={value} progress={value} />
+<h1 className="font-bold flex justify-center mt-2">ProgressBar</h1>
+{bars.map((item) => (
+<ProgressBar key={item} progress={item} />
 ))}
 </>
 );
