@@ -1,9 +1,12 @@
 const ProgressBar = (props) => {
   return (
     <>
-      <div className="border border-black mx-2 rounded-lg">
-        <div className="bg-green-800" style={{ width: `${props.progress}` }}>
-          {props.progress}
+      <div className=" mx-2 ">
+        <div
+          className="bg-green-800 mb-1 border border-black rounded-lg text-white text-center"
+          style={{ width: `${props.progress}%` }}
+        >
+          {props.progress}%
         </div>
       </div>
     </>
