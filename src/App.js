@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <h1 className="font-bold flex justify-center mt-2">ProgressBar</h1>
-      <ProgressBar progress={70} />
+      <ProgressBar progress={50} />
     </>
   );
 }
