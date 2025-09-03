@@ -12,6 +12,10 @@ const ProgressBar = (props) => {
               "repeating-linear-gradient(45deg, rgba(255,255,255,0.15) 0, rgba(255,255,255,0.15) 10px, transparent 10px, transparent 20px)",
             transition: "width 1s ease-in-out",
           }}
+          role="progressbar"
+          aria-valuemax={100}
+          aria-valuemin={0}
+          aria-valuenow={props.progress}
         >
           <span className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 font-semibold text-white select-none">
             {props.progress}%
