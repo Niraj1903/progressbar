@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import ProgressBar from "./ProgressBar";
 import "./App.css";
 
